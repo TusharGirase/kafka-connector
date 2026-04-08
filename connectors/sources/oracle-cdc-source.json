@@ -1,0 +1,25 @@
+{
+  "name": "oracle-cdc-source",
+  "config": {
+    "connector.class": "io.debezium.connector.oracle.OracleConnector",
+    "database.hostname": "oracle",
+    "database.port": "1521",
+    "database.user": "C##DBZUSER",
+    "database.password": "dbzpassword",
+    "database.dbname": "XE",
+    "database.pdb.name": "XEPDB1",
+    "topic.prefix": "oracle",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:29092",
+    "schema.history.internal.kafka.topic": "schema-changes.oracle",
+    "decimal.handling.mode": "double",
+    "log.mining.strategy": "online_catalog",
+    "snapshot.mode": "initial",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "true",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+
+    "_comment_table_include_list": "Add new tables here as SCHEMA.TABLE_NAME comma separated",
+    "table.include.list": "APPUSER.EMPLOYEES, APPUSER.DEPARTMENTS, APPUSER.PRODUCTS, APPUSER.ORDERS, APPUSER.CUSTOMERS"
+  }
+}

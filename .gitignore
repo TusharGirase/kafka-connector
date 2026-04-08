@@ -1,0 +1,27 @@
+# Maven
+streams-app/target/
+streams-app/*.jar
+
+# Docker volumes / temp
+oracle-init/enable_archivelog.sh
+oracle-init/enable_suplog.sh
+oracle-init/grant_debezium.sh
+oracle-init/create_cdc_user.sh
+oracle-init/del_bob.sql
+oracle-init/del_carol.sql
+oracle-init/test_cdc.sh
+oracle-init/test_ops.sql
+oracle-init/02_cdc_setup.sql
+
+# Connect legacy scripts
+connect/register-connectors.sh
+connect/reset-offset.sh
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+.vscode/

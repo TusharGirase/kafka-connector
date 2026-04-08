@@ -1,0 +1,22 @@
+{
+  "name": "sink-products",
+  "config": {
+    "_comment": "PRODUCTS needs no join. Reads raw CDC topic directly.",
+
+    "connector.class": "com.mongodb.kafka.connect.MongoSinkConnector",
+    "topics": "oracle.APPUSER.PRODUCTS",
+    "connection.uri": "mongodb://root:root@mongodb:27017",
+    "database": "poc",
+    "collection": "products",
+
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "true",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+
+    "change.data.capture.handler": "com.mongodb.kafka.connect.sink.cdc.debezium.rdbms.RdbmsHandler",
+    "document.id.strategy": "com.mongodb.kafka.connect.sink.processor.id.strategy.PartialKeyStrategy",
+    "document.id.strategy.partial.key.projection.list": "ID",
+    "document.id.strategy.partial.key.projection.type": "AllowList"
+  }
+}
